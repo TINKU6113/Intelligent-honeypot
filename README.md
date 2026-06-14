@@ -106,7 +106,38 @@ IP Blocking via Socket-Based Response System
 - Approved IPs are sent via socket to blocking system  
 
 ---
+## 📁 Project Structure
 
+```
+AI-Honeypot-Security-System/
+│
+├── honeypot/
+│   ├── cowrie_config/          # Cowrie honeypot configuration files
+│   └── logs/
+│       ├── cowrie.json         # SSH honeypot logs (newline-delimited JSON)
+│       └── http.log            # HTTP honeypot logs (JSON-lines or combined format)
+│
+├── ai_engine/
+│   ├── gemini_analyzer.py      # Core Gemini API analysis logic
+│   └── prompt_templates.py     # All LLM prompts (edit here to tune analysis)
+│
+├── threat_intel/
+│   ├── probes.py               # Active probes: whois, geoip, ping, nmap, banner
+│   └── geoip.py                # GeoIP helpers & probe summary printer
+│
+├── response_engine/
+│   ├── ip_blocker_client.py    # Client: sends IPs to the socket server for blocking
+│   └── socket_server.py        # Server: receives IPs and applies firewall rules
+│
+├── notebooks/
+│   └── honeypot_analysis.ipynb # Main notebook — end-to-end pipeline
+│
+├── reports/                    # Auto-generated AI analysis reports
+├── requirements.txt
+└── README.md
+```
+
+---
 ## 📦 Installation
 
 ```bash
